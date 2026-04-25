@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nghia Dai Vo — CV</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root {
+    --bg: #faf6f0;
+    --bg-chat: #ffffff;
+    --bg-human: #f4efe8;
+    --bg-agent: #ffffff;
+    --bg-code: #f7f3ed;
+    --bg-sidebar: #f0ebe4;
+    --fg: #2d2a26;
+    --fg-secondary: #6b6560;
+    --fg-muted: #9b9590;
+    --accent: #c96442;
+    --accent-light: #e8a87c;
+    --link: #b35c38;
+    --border: #e6e0d8;
+    --tag-bg: #eee8e0;
+    --tag-text: #5c5650;
+    --green: #4a8c6f;
+    --blue: #4a7ab5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    font-size: 14px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  .app {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 24px 24px 60px;
+  }
+
+  /* ── Header ── */
+  .header {
+    text-align: center;
+    padding: 36px 0 24px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 32px;
+  }
+
+  .header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--fg);
+    letter-spacing: -0.5px;
+  }
+
+  .header .subtitle {
+    color: var(--fg-secondary);
+    font-size: 14.5px;
+    margin-top: 4px;
+    font-weight: 500;
+  }
+
+  .contact-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--fg-muted);
+  }
+
+  .contact-row a {
+    color: var(--link);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .contact-row a:hover { text-decoration: underline; }
+
+  /* ── Chat Messages ── */
+  .chat { display: flex; flex-direction: column; gap: 20px; }
+
+  .msg {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 2px;
+  }
+
+  .avatar.human {
+    background: var(--bg-human);
+    color: var(--fg-secondary);
+    border: 1.5px solid var(--border);
+  }
+
+  .avatar.agent {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  .msg-body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .msg-sender {
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 4px;
+    color: var(--fg);
+  }
+
+  .msg-sender .label {
+    font-weight: 400;
+    color: var(--fg-muted);
+    font-size: 12px;
+    margin-left: 6px;
+  }
+
+  .human-text {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--fg);
+  }
+
+  .agent-text {
+    font-size: 14px;
+    color: var(--fg);
+    line-height: 1.65;
+  }
+
+  .agent-text p { margin-bottom: 10px; }
+  .agent-text p:last-child { margin-bottom: 0; }
+
+  /* ── Tags / Skills ── */
+  .skill-group { margin-bottom: 10px; }
+
+  .skill-label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--fg-muted);
+    margin-bottom: 6px;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag {
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    padding: 3px 10px;
+    border-radius: 14px;
+    font-size: 12.5px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .tag.primary {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  .tag.muted {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--fg-muted);
+    font-size: 11.5px;
+  }
+
+  /* ── Experience Card ── */
+  .exp-card {
+    background: var(--bg-code);
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+    border-left: 3px solid var(--accent-light);
+  }
+
+  .exp-card:last-child { margin-bottom: 0; }
+
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 2px;
+  }
+
+  .exp-title {
+    font-weight: 700;
+    font-size: 14.5px;
+    color: var(--fg);
+  }
+
+  .exp-title .company { color: var(--accent); }
+
+  .exp-period {
+    font-size: 12.5px;
+    color: var(--fg-muted);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .exp-domain {
+    font-size: 12.5px;
+    color: var(--fg-secondary);
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+
+  .exp-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .exp-list li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 5px;
+    font-size: 13px;
+    color: var(--fg);
+    line-height: 1.55;
+  }
+
+  .exp-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--accent-light);
+    font-weight: 700;
+  }
+
+  .exp-list li strong {
+    font-weight: 600;
+  }
+
+  /* ── Education ── */
+  .edu-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .edu-degree { font-weight: 600; font-size: 14px; }
+  .edu-school { color: var(--fg-secondary); font-size: 13.5px; }
+
+  .training-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 4px 0;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    padding-top: 32px;
+    font-size: 12px;
+    color: var(--fg-muted);
+  }
+
+  .footer .prompt {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg-human);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 8px 20px;
+    font-size: 13px;
+    color: var(--fg-muted);
+  }
+
+  .footer .prompt .cursor {
+    display: inline-block;
+    width: 2px;
+    height: 16px;
+    background: var(--accent);
+    animation: blink 1s infinite;
+    border-radius: 1px;
+  }
+
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  /* ── Print ── */
+  @media print {
+    body { background: #fff; font-size: 12px; }
+    .app { padding: 12px; max-width: 100%; }
+    .header { padding: 16px 0 12px; margin-bottom: 16px; }
+    .header h1 { font-size: 22px; }
+    .chat { gap: 12px; }
+    .exp-card { padding: 10px 14px; margin-bottom: 8px; }
+    .footer { display: none; }
+    .avatar { width: 26px; height: 26px; font-size: 12px; }
+  }
+
+  @page { size: A4; margin: 12mm; }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>Nghia Dai Vo</h1>
+    <div class="subtitle">Senior Quality Engineer · Senior Test Automation Engineer</div>
+    <div class="contact-row">
+      <span>✉ nghiadaivo@gmail.com</span>
+      <span>☎ 0898 761 961</span>
+      <a href="https://www.linkedin.com/in/dai-nghia-vo/">LinkedIn ↗</a>
+      <a href="https://github.com/vodainghia">GitHub ↗</a>
+    </div>
+  </div>
+
+  <!-- Chat -->
+  <div class="chat">
+
+    <!-- Summary -->
+    <div class="msg">
+      <div class="avatar human">R</div>
+      <div class="msg-body">
+        <div class="msg-sender">Recruiter</div>
+        <div class="human-text">Tell me about yourself.</div>
+      </div>
+    </div>
+
+    <div class="msg">
+      <div class="avatar agent">N</div>
+      <div class="msg-body">
+        <div class="msg-sender">Nghia <span class="label">· Quality Engineer</span></div>
+        <div class="agent-text">
+          <p>Quality Engineer with 7+ years of experience across <strong>private equity, logistics, payments, and supply chain</strong>. I design E2E and API test automation frameworks, build internal developer tools adopted across engineering and non-technical teams, and contribute to AI-assisted testing workflows. My focus is on test architecture and shipping tools that reduce manual effort at scale.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Skills -->
+    <div class="msg">
+      <div class="avatar human">R</div>
+      <div class="msg-body">
+        <div class="msg-sender">Recruiter</div>
+        <div class="human-text">What's your tech stack?</div>
+      </div>
+    </div>
+
+    <div class="msg">
+      <div class="avatar agent">N</div>
+      <div class="msg-body">
+        <div class="msg-sender">Nghia</div>
+        <div class="agent-text">
+          <div class="skill-group">
+            <div class="skill-label">Languages</div>
+            <div class="tags">
+              <span class="tag">TypeScript</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Java</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-label">Test Frameworks</div>
+            <div class="tags">
+              <span class="tag">Playwright</span>
+              <span class="tag">Rest-Assured</span>
+              <span class="tag">Cucumber</span>
+              <span class="tag">TestNG</span>
+              <span class="tag">Allure</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-label">Tooling & Management</div>
+            <div class="tags">
+              <span class="tag">Git</span>
+              <span class="tag">Xray</span>
+              <span class="tag">TestRail</span>
+              <span class="tag">Jira</span>
+              <span class="tag">Azure DevOps</span>
+              <span class="tag">Postman</span>
+              <span class="tag">API Dog</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-label">AI-Assisted QE</div>
+            <div class="tags">
+              <span class="tag">Claude Code</span>
+              <span class="tag">AntiGravity</span>
+              <span class="tag">Cursor</span>
+              <span class="tag">Windsurf</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-label">Also worked with</div>
+            <div class="tags">
+              <span class="tag muted">JMeter</span>
+              <span class="tag muted">Burp Suite</span>
+              <span class="tag muted">SQL Server</span>
+              <span class="tag muted">Neo4j</span>
+              <span class="tag muted">Linux CLI</span>
+              <span class="tag muted">Cloudflare Workers</span>
+              <span class="tag muted">React</span>
+              <span class="tag muted">Vite</span>
+              <span class="tag muted">Tailwind CSS</span>
+              <span class="tag muted">Spring Boot</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Experience -->
+    <div class="msg">
+      <div class="avatar human">R</div>
+      <div class="msg-body">
+        <div class="msg-sender">Recruiter</div>
+        <div class="human-text">Walk me through your experience.</div>
+      </div>
+    </div>
+
+    <div class="msg">
+      <div class="avatar agent">N</div>
+      <div class="msg-body">
+        <div class="msg-sender">Nghia</div>
+        <div class="agent-text">
+
+          <div class="exp-card">
+            <div class="exp-header">
+              <span class="exp-title">Quality Engineer · <span class="company">Anduin Transactions</span></span>
+              <span class="exp-period">Feb 2023 – Present</span>
+            </div>
+            <div class="exp-domain">Private Equity — Workflow automation for private capital markets, powering $68B+ in investments</div>
+            <ul class="exp-list">
+              <li><strong>Led initial development</strong> of a Playwright + TypeScript E2E framework (Stargate) with multi-environment config (10+ servers), Page Object Model, role-based account pools, dynamic ID resolution, and Allure reporting.</li>
+              <li><strong>Championed plan-first testing:</strong> product requirements are distilled into test plans (.testplan.md) that serve as contracts; specs are then generated via AI agent workflow (Claude Code & AntiGravity), ensuring intentions survive framework migrations.</li>
+              <li><strong>Extended and refined</strong> a Rest-Assured + Cucumber + Java API test suite covering public APIs and Webhooks; expanded coverage with parallel execution and multi-environment support.</li>
+              <li><strong>Co-developed GoldBerry,</strong> a QA framework for smart form validation using Bun, with pipeline scripts for test-flow generation, blueprint comparison, and effect-centric matching.</li>
+              <li><strong>Created White Tree,</strong> an internal web platform (React 19 + Vite + Cloudflare) with 10+ tools: effort estimator, UI bug detector, mapping comparator — used by QE and Digitization teams.</li>
+              <li><strong>Contributed to R&D:</strong> digitization workflow improvements, and AI-assisted test generation research.</li>
+            </ul>
+          </div>
+
+          <div class="exp-card">
+            <div class="exp-header">
+              <span class="exp-title">QA Engineer · <span class="company">Parcel Perform</span></span>
+              <span class="exp-period">Mar 2022 – Jan 2023</span>
+            </div>
+            <div class="exp-domain">Logistics — Global e-commerce delivery platform, 100M+ parcel updates/day, 800+ carriers</div>
+            <ul class="exp-list">
+              <li>Core squad member for data structure, events & mapping, and customer integrations.</li>
+              <li>Tested public APIs, inbound webhooks, and SFTP servers; performed root cause analysis via Linux server logs.</li>
+              <li>Designed test plans for new features; contributed to business requirements and feature specifications.</li>
+            </ul>
+          </div>
+
+          <div class="exp-card">
+            <div class="exp-header">
+              <span class="exp-title">QA Engineer · <span class="company">Live Payments</span></span>
+              <span class="exp-period">Jan 2021 – Feb 2022</span>
+            </div>
+            <div class="exp-domain">Payments — Leading Australian payment service provider</div>
+            <ul class="exp-list">
+              <li>Conducted cross-platform web testing; validated internal APIs with Postman + JavaScript.</li>
+              <li>Created JMeter performance test scripts; contributed to business requirements and test documentation.</li>
+            </ul>
+          </div>
+
+          <div class="exp-card">
+            <div class="exp-header">
+              <span class="exp-title">QC Engineer · <span class="company">NashTech</span></span>
+              <span class="exp-period">Dec 2018 – Dec 2020</span>
+            </div>
+            <div class="exp-domain">Multiple ODC projects (client names under NDA)</div>
+            <ul class="exp-list">
+              <li><strong>Supply Chain Platform:</strong> Tested system serving 1,000+ buyers / 200,000+ suppliers; built automation scripts with TestComplete.</li>
+              <li><strong>Debt Management:</strong> QA for multi-country enterprise platform (UK, Germany, Austria, Nordics) for credit and debt collection.</li>
+              <li><strong>CAT System:</strong> Verified professional translation tool supporting multilingual content and localization workflows.</li>
+              <li><strong>Accessibility Portal:</strong> Ensured functional quality and accessibility for a platform supporting visually impaired users (AU).</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Education -->
+    <div class="msg">
+      <div class="avatar human">R</div>
+      <div class="msg-body">
+        <div class="msg-sender">Recruiter</div>
+        <div class="human-text">Education and training?</div>
+      </div>
+    </div>
+
+    <div class="msg">
+      <div class="avatar agent">N</div>
+      <div class="msg-body">
+        <div class="msg-sender">Nghia</div>
+        <div class="agent-text">
+          <div class="edu-row">
+            <span class="edu-degree">B.Sc. in Information Technology</span>
+            <span class="edu-school">— VNUHCM University of Science</span>
+          </div>
+          <div class="training-list">
+            <span class="tag">Backend Dev (Java + Spring Boot)</span>
+            <span class="tag">Selenium + Java + TestNG</span>
+            <span class="tag">Playwright + TypeScript</span>
+            <span class="tag">Security Testing (Burp Suite)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="prompt">
+      Ask me anything else...
+      <span class="cursor"></span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
